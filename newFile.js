@@ -1,14 +1,14 @@
-const originalDeck = []; 
-const dummyArray = [34, 3, 3,3, 43, 3,3, 4,4]
-console.log(dummyArray)
-fetch('https://www.deckofcardsapi.com/api/deck/new/draw/?count=52')
-    .then(response => response.json())
-    .then(data => /*originalDeck.push(data)*/{for(let counter = 0; counter < 52; counter++){
-        originalDeck.push(data.cards[counter])
-    }})
-    //.then(originalDeck.code[0])
-    .then(console.log(originalDeck))
-    .then(console.log(originalDeck.cards))
+// const originalDeck = []; 
+// const dummyArray = [34, 3, 3,3, 43, 3,3, 4,4]
+// console.log(dummyArray)
+// fetch('https://www.deckofcardsapi.com/api/deck/new/draw/?count=52')
+//     .then(response => response.json())
+//     .then(data => /*originalDeck.push(data)*/{for(let counter = 0; counter < 52; counter++){
+//         originalDeck.push(data.cards[counter])
+//     }})
+//     //.then(originalDeck.code[0])
+//     .then(console.log(originalDeck))
+//     .then(console.log(originalDeck.cards))
     //switch  per game statement 
         //War, Solitaire, 
 

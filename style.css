@@ -1,0 +1,82 @@
+#body1 {
+    background-color: green;
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+#randomDogs { 
+    margin-left: 42.5%;
+}
+
+
+
+/* dog Highlight Section*/
+#dogHighlight {
+    text-align: center;
+    color: white;
+    border: 3px solid  yellow;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+.dogParagraph {
+    color: whitesmoke;
+    border: 1px solid red;
+    
+}
+
+#dogHighlight h2,h3 {
+    border: 1px solid yellow;
+}
+
+/* new dog form section  */
+#new-dog {
+    text-align: center;
+    color: white;
+    border: 3px solid navy;
+    margin-left: 80%;
+    margin-top: 15%;
+    margin-right: 5%;
+
+}
+
+#new-dog input {
+    text-align: center;
+} 
+ 
+#new-dog h4 {
+    color: white;
+}
+
+/* my favorite dogs section */
+#favorites h3 {
+    text-align: center;
+    color: magenta;
+    border: 2px solid yellow;
+    margin-left: 5%;
+    margin-right: 80%;
+
+}
+
+#myFavorites {
+    text-align: center;
+    color: whitesmoke;
+    border: 2px solid yellow;
+    margin-left: 5%;
+    margin-right: 80%;
+}
+
+
+
+
+
+
+ 
