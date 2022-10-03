@@ -6,56 +6,39 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-
 h1 {
     text-align: center;
     color: white;
 }
-
-#randomDogs { 
+#randomMovies {
     margin-left: 42.5%;
 }
-
-
-
 /* dog Highlight Section*/
-#dogHighlight {
+#movieHighlight {
     text-align: center;
     color: white;
     border: 3px solid  yellow;
     margin-left: 20%;
     margin-right: 20%;
   }
-
-.dogParagraph {
-    color: whitesmoke;
-    border: 1px solid red;
-    
-}
-
-#dogHighlight h2,h3 {
+#movieHighlight h2,h3 {
     border: 1px solid yellow;
 }
-
 /* new dog form section  */
-#new-dog {
+#newMovie {
     text-align: center;
     color: white;
     border: 3px solid navy;
     margin-left: 80%;
     margin-top: 15%;
     margin-right: 5%;
-
 }
-
-#new-dog input {
+#new-movie input {
     text-align: center;
-} 
- 
-#new-dog h4 {
+}
+#new-movie h4 {
     color: white;
 }
-
 /* my favorite dogs section */
 #favorites h3 {
     text-align: center;
@@ -63,9 +46,7 @@ h1 {
     border: 2px solid yellow;
     margin-left: 5%;
     margin-right: 80%;
-
 }
-
 #myFavorites {
     text-align: center;
     color: whitesmoke;
@@ -73,10 +54,3 @@ h1 {
     margin-left: 5%;
     margin-right: 80%;
 }
-
-
-
-
-
-
- 
