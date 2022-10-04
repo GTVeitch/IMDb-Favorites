@@ -3,16 +3,16 @@
   <head>
     <link rel="stylesheet" href="style.css"/>
     <title>Phase-1-Project-Favorite-Movies</title>
-    <div id="history">
-      <span id="list">History</span>
-    </div>
   </head>
 
   <body id="body1">
+    <div id="history">
+      <span id="list">History : </span>
+    </div>
     <h1>What are your favorite movies? </h1>
     <div id="movieHighlight">
       <h2 class="highlightTitle">Name</h2>
-      <img id="highlight-image" src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
+      <img id="highlight-image" class='movieCover' src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
         alt="Sorry, we are experiencing technical difficulties." />
       <div class="release">
           <h3>Release Year: </h3>
@@ -25,8 +25,10 @@
         <button id="addToFavorites"> Add to favorites</button>
       </div>
     </div>
+    <br>
     <button id="randomMovies">Random Movies!</button>
     <br>
+    <!-- new buttons go here-->
     <br>
     <div id="movieProfiles">
       <!-- Images Will go here. 2 images tall x 3 images wide-->
@@ -36,33 +38,27 @@
     </div>
 
     <form id="newMovie">
-      <h4>Add your favorites!</h4>
+      <h4>Add your favorites not shown!</h4>
       <label for="name">Name:</label> <br>
-      <input type="text" id="new-name"/>
+      <input type="text" id="new-name" name='new-name'/>
       <br>
       <br>
       <label for="image">Cover Image: </label> <br>
-      <input type="text" id="new-image" placeholder="insert URL"/>
+      <input type="text" id="new-image" placeholder="insert URL" name='new-image'/>
       <br>
       <br>
-      <label for="avgRating">Release Year: </label>
-      <input type="text" id="new-releaseYear"/>
+      <label for="releaseYear">Release Year: </label>
+      <input type="text" id="new-releaseYear" name='new-releaseYear'/>
       <br>
       <br>
       <label for="numRating">Rating: </label>
-      <input type="number" id="new-rating" placeholder="ex: 9.0, 8.5, 7.4"/>
+      <input type="text" id="new-rating" placeholder="ex: 9.0, 8.5, 7.4" name='new-rating'/>
       <br>
       <br>
-      <input type="submit" value="Create  Movie!" />
+      <input type="submit" value="Create  Movie!"/>
     </form>
     <div id="favorites">
-      <h3>My Favorite Movies</h3>
-      <p id="myFavorites">
-        <!-- add my selected movies to this location, -->
-        <!-- when these named are clicked, the movie info pulls up in the "Movie Highlight" section-->
-      * Pug
-      <br>
-      </p>
+      <h3 id = "myFavorites">My Favorite Movies</h3>
     </div>
   </body>
   <script src="newFile.js"> </script>

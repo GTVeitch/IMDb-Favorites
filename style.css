@@ -18,6 +18,7 @@ h1 {
     text-align: center;
     color: white;
     border: 3px solid  yellow;
+    image-rendering: center;
     margin-left: 20%;
     margin-right: 20%;
   }
@@ -40,17 +41,28 @@ h1 {
     color: white;
 }
 /* my favorite dogs section */
-#favorites h3 {
-    text-align: center;
-    color: magenta;
+
+#favorites {
     border: 2px solid yellow;
-    margin-left: 5%;
     margin-right: 80%;
 }
-#myFavorites {
+
+#favorites h3 {
+    text-align: center;
+    color: purple;
+    border: 2px solid yellow;
+    
+}
+.myFavorites {
+    border-top: hidden;
     text-align: center;
     color: whitesmoke;
     border: 2px solid yellow;
-    margin-left: 5%;
-    margin-right: 80%;
 }
+
+.movieCover {
+    border: 4px solid black;
+    margin-right: 3px;
+    margin-left: 4px;
+}
+
