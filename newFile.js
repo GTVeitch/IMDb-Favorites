@@ -24,16 +24,19 @@ let movieHistoryLength = 0
 
 
 
-//Need to get done
+//Need to get done:
     //add a alert that doesn't allow ytou to add the movies to the favorites list twice
+    //no duplicate random cards 
     //remove from favorites button 
     //history bar 
     //format properly
+    //event listeners to 9.1, etc. buttons  
 
-//Want to get done    
+//Want to get done:    
     //myfavorites stays when we refresh the page. 
 
 
+//see if adding title to  the fetch will work and delete  .items below. We  will see. 
 //API!
 // fetch(`https://imdb-api.com/en/API/Top250Movies/k_9m771wic`)
 //     .then(response => response.json())
@@ -78,7 +81,9 @@ function createMovieCard(movieObj) {
         )
     }
 
-
+//remove duplicates:
+//make a clone of the pile so we  don't delete it,  then remove the 'current'
+//so you cannot grab that one again.
 function randomMovies() {
     //this function clears all the movies from the array
     movieProfiles.innerHTML = ''
@@ -198,8 +203,12 @@ function addMovie(){
 }
 addMovie()
 
+
 //take the entire move list
 //run a find on it (depends on the button clicked) 
 //take the returned array from find that has a foreach loop that spits it 
 //through each card.
 //criteria is(>9.0, 8.9, 8.8, 8.7, etc.)
+
+//couldn't i make a loop function that selects all of the items with 9.1,9,0 etc. 
+//as a switch or a else if (need to look up which one.)
