@@ -52,6 +52,18 @@ function createMovieCard(movieObj) {
 
 
 
+
+
+//event listeners to:
+// random movies
+// add to favorites
+// history drop down menu, selected one will merge into it. 
+// an add to favorites on  each of the 6 items. 
+// create movie 
+
+
+
+
 function showSelected(movieObj) {
     //currentMovie = movieObj
     imageHighlight.src = movieObj.image
