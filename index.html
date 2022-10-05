@@ -9,42 +9,61 @@
     <div id="history">
       <span id="list">History : </span>
     </div>
-    <h1>What are your favorite movies? </h1>
-    <div id="movieHighlight">
-      <h2 class="highlightTitle">Name</h2>
-      <img id="highlight-image" class='movieCover' src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
-        alt="Sorry, we are experiencing technical difficulties." />
-      <div class="release">
-          <h3>Release Year: </h3>
-          <span id="releaseYear">I pull this from API</span>
+    <br>
+
+    <span>
+      <span class="alignThing"  id="alignThing">
+        <p class = "myFavorites" id = "myFavorites">My Favorite Movies</p>
+      </span>
+      
+
+      
+      <div id="topSection"> 
+        <h1>Add Your Favorite Movies! </h1>
+        <div id="movieHighlight">
+          <h2 class="highlightTitle">Name</h2>
+          <img id="highlight-image" class='movieCover' src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
+            alt="Sorry, we are experiencing technical difficulties." />
+          <div class="release">
+              <h3>Release Year: </h3>
+              <span id="releaseYear">I pull this from API</span>
+          </div>
+          <div class="rating">
+            <h3>Rating (#/10): </h3>
+            <span id="movieRating">I pull this from API</span>
+          </div>
+          <div>
+            <button id="addToFavorites"> Add to favorites</button>
+          </div>
+        </div>
       </div>
-      <div class="rating">
-        <h3>Rating (#/10): </h3>
-        <span id="movieRating">I pull this from API</span>
-      </div>
-        <button id="addToFavorites"> Add to favorites</button>
-      </div>
+    </span>
+    
+    
+
+
+    
+    <br>
+    <div id="randomButtonContainer">
+      <button id="randomMovies">Random Movies!</button>
     </div>
     <br>
-    <button id="randomMovies">Random Movies!</button>
-    <br>
+    <div id="allTheButtons">
+      <button id="b92" class="filterButtons">9.2</button>
+      <button id="b91" class="filterButtons">9.1</button>
+      <button id="b90" class="filterButtons">9.0</button>
+      <button id="b89" class="filterButtons">8.9</button>
+      <button id="b88" class="filterButtons">8.8</button>
+      <button id="b87" class="filterButtons">8.7</button>
+      <button id="b86" class="filterButtons">8.6</button>
+      <button id="b85" class="filterButtons">8.5</button>
+      <button id="b84" class="filterButtons">8.4</button>
+      <button id="b83" class="filterButtons">8.3</button>
+      <button id="b82" class="filterButtons">8.2</button>
+      <button id="b81" class="filterButtons">8.1</button>
+      <button id="b80" class="filterButtons">8</button>
+  </div>
     
-    <button id="b9.2" class="filterButtons">9.2</button>
-    <button id="b9.1" class="filterButtons">9.1</button>
-    <button id="b9.0" class="filterButtons">9.0</button>
-    <button id="b8.9" class="filterButtons">8.9</button>
-    <button id="b8.8" class="filterButtons">8.8</button>
-    <button id="b8.7" class="filterButtons">8.7</button>
-    <button id="b8.6" class="filterButtons">8.6</button>
-    <button id="b8.5" class="filterButtons">8.5</button>
-    <button id="b8.4" class="filterButtons">8.4</button>
-    <button id="b8.3" class="filterButtons">8.3</button>
-    <button id="b8.2" class="filterButtons">8.2</button>
-    <button id="b8.1" class="filterButtons">8.1</button>
-    <button id="b8.0" class="filterButtons">8.0</button>
-
-    <!-- new buttons go here-->
-    <br>
     <div id="movieProfiles">
       <!-- Images Will go here. 2 images tall x 3 images wide-->
       <!-- Each image will have a like counting button,
@@ -52,29 +71,29 @@
       My 5 Favorite Breeds-->
     </div>
 
-    <form id="newMovie">
-      <h4>Add your favorites not shown!</h4>
-      <label for="name">Name:</label> <br>
-      <input type="text" id="new-name" name='new-name'/>
-      <br>
-      <br>
-      <label for="image">Cover Image: </label> <br>
-      <input type="text" id="new-image" placeholder="insert URL" name='new-image'/>
-      <br>
-      <br>
-      <label for="releaseYear">Release Year: </label>
-      <input type="text" id="new-releaseYear" name='new-releaseYear'/>
-      <br>
-      <br>
-      <label for="numRating">Rating: </label>
-      <input type="text" id="new-rating" placeholder="ex: 9.0, 8.5, 7.4" name='new-rating'/>
-      <br>
-      <br>
-      <input type="submit" value="Create  Movie!"/>
-    </form>
-    <div id="favorites">
-      <h3 id = "myFavorites">My Favorite Movies</h3>
-    </div>
+      <form id="newMovie">
+        <h4>Add your favorites not shown!</h4>
+        <label for="name">Name:</label> <br>
+        <input type="text" id="new-name" class="stayInBorder" name='new-name'/>
+        <br>
+        <br>
+        <label for="image">Cover Image: </label> <br>
+        <input type="text" id="new-image" class="stayInBorder" placeholder="insert URL" name='new-image'/>
+        <br>
+        <br>
+        <label for="releaseYear">Release Year: </label><br>
+        <input type="text" id="new-releaseYear" class="stayInBorder" name='new-releaseYear'/>
+        <br>
+        <br>
+        <label for="numRating">Rating: </label><br>
+        <input type="text" id="new-rating" class="stayInBorder" placeholder="ex: 9.0, 8.5, 7.4" name='new-rating'/>
+        <br>
+        <br>
+        <input type="submit" value="Create  Movie!"/>
+      </form>
+
+    
+  
   </body>
   <script src="newFile.js"> </script>
 </html>

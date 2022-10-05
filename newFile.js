@@ -17,6 +17,7 @@ const newMovieForm = document.querySelector('#newMovie')
 const randomButton = document.querySelector('#randomMovies')
 const favoritesButton = document.querySelector('#addToFavorites')
 const favoritesList = document.querySelector('#myFavorites')
+const ratingButtons = document.querySelectorAll('.filterButtons')
 
 //Establish a starting point for these variables. 
 let movieListLength = 0
@@ -29,7 +30,7 @@ let movieHistoryLength = 0
 //     .then(response => response.json())
 //     .then(thing => {
 //         movieList.push(thing.items)
-//         movieListLength = movieList[0].length
+//         movieListLength = (movieList[0].length)
 //         randomMoviesOnCard()
 // })     
 
@@ -40,7 +41,7 @@ fetch(`http://localhost:3000/items`)
     .then(objectData => {
         movieList.push(objectData)
         //assigns the variable an actual value
-        movieListLength = movieList[0].length
+        movieListLength = (movieList[0].length)
         randomMovieOnCard() 
     }
 )    
@@ -62,9 +63,9 @@ function createMovieCard(movieObj) {
     // navItem3.innerText = 'Learn More!'
     // navItem3.classList.add('movieButton')
     //Add the span, nested within the img. 
-    navItem2.append(navItem /*, navItem3*/)
+    movieProfiles.appendChild(navItem /*, navItem3*/)
     //Add it all to the movie profiles section of the HTML
-    movieProfiles.append(navItem2)
+    navItem.append(navItem2)
     //functionality for the individual movie cards. 
     navItem2.addEventListener('click', e => {
         e.preventDefault()
@@ -89,31 +90,52 @@ function createMovieCard(movieObj) {
 function randomMovieOnCard() {
     //this line clears all the movies from the array
     movieProfiles.innerHTML = ''
-    for(const counter1 = 0;counter1 < shownMovies.length ; counter1){
+    for(const counter1 = 0; counter1 < shownMovies.length ; counter1){
         shownMovies.pop()
     }
-    for(let counter2 = 0; counter2 < 3; counter2++){
-        for(let counter3 = 0; counter3 < 5; counter3++){
+    for(let counter3 = 0; counter3 < 25; counter3++){
 
-                let randomNumber = parseInt(Math.random() * movieListLength - 1)
-                //checks for identicle input
-                //in the entire shownMovies Array find the movieList[0][thing]
-                while(shownMovies.find(function () {movieList[0][randomNumber]})){
-                    randomNumber = parseInt(Math.random() * movieListLength - 1)  
-                }
-                //movieList[0] is accesting the nested array.
-                createMovieCard(movieList[0][randomNumber])
-                shownMovies.push(movieList[0][randomNumber])
+            let randomNumber = parseInt(Math.random() * movieListLength)
+            let duplicates = false
+            //checks for identicle input
+            //in the entire shownMovies Array find the movieList[0][thing]
+
+            do{
+                //establish a new random #, we need that number within out loop. 
+                //set it as true so the repeat condition is not met
+                duplicates = false
+                //make a new random
+                randomNumber = parseInt(Math.random() * movieListLength)
+                //check if the movie  title is not the  same as the random title 
+                shownMovies.forEach(movie => {
+                    //if the random title is not the same, nothing happens 
+                    switch(movie.title === movieList[0][randomNumber].title){
+                        case (true):
+                            duplicates = true
+                            break;
+                        //if a bug occurs or the random  title exists in our list,
+                        //then the repeat condition is met.
+                        default:
+                            
+                            break;
+                        }
+                    }
+                        
+                )
+                //repeat condition 
+            } while (duplicates === true)
+            
+
+            //movieList[0] is accesting the nested array.
+            createMovieCard(movieList[0][randomNumber])
+            shownMovies.push(movieList[0][randomNumber])
         }
-        const lineBreak = document.createElement('br')
-        movieProfiles.append(lineBreak)
-    }
+    
     showSelectedCard(shownMovies[0])
-    //show random
-    //showSelectedCard(movieList[0] [parseInt(Math.random() * movieListLength)])
 }
 
 function showSelectedCard(movieObj) {
+    currentMovie = movieObj
     imageHighlight.src = movieObj.image
     titleHighlight.textContent = movieObj.title
     ratingHighlight.textContent = movieObj.imDbRating
@@ -123,32 +145,59 @@ function showSelectedCard(movieObj) {
 function createFavoriteMovieCard(movieObj) {
     currentMovie = movieObj;
     const navItem = document.createElement('img')
-    const navItem2 = document.createElement('ul')
-
+    const navItem2 = document.createElement('div')
+    const navItem3 = document.createElement('button')
         navItem.src = movieObj.image
+        navItem.classList.add('movieCover')
         navItem2.innerText = movieObj.title
+        navItem.classList.add("movieText")
+        navItem3.textContent = "Unfavorite"
     favoritesList.append(navItem2)
     navItem2.append(navItem)
-    navItem2.addEventListener('click', e => {
+    navItem2.append(navItem3)
+    navItem.addEventListener('click', e => {
         e.preventDefault()
         showSelectedCard(movieObj)
         movieHistory.push(movieObj)
         historyList()
         //set the current movie when clicked. 
         currentMovie = movieObj
-    }
-)
+    })
+    navItem3.addEventListener('click', e => {
+        e.preventDefault()
+        // in my favs, destructivly remove, (find in the list the first movie
+        //that  has a title  equal to a movie in the movie object list) 
+        myFavoritesList.splice(myFavoritesList.find(movie => movie.title = movieObj.title))
+        navItem2.remove()
+        //make it remove from favorite list. Not needed here necesarily. 
+    })
 }
 
 function favoritesButtonPower(){
     favoritesButton.addEventListener('click', e => {
         e.preventDefault()
-        myFavoritesList.push(currentMovie)
-        createFavoriteMovieCard(currentMovie)
-        //navItem.textContent = currentMovie.title
+        let duplicates = false
+        myFavoritesList.forEach(movie => {
+            switch(movie.title === currentMovie.title){
+                case(true):    
+                    duplicates = true
+                    alert("You already have that movie in your favorites list.")
+                    break;
+                default:
+                    //is basically saying case false 
+                    break;
+            }
+        })    
+        if(duplicates === false) {
+            myFavoritesList.push(currentMovie)
+            createFavoriteMovieCard(currentMovie)
+        }       
     })
 }
+        
+    
 favoritesButtonPower()
+
 
 function randomButtonPower() {
     randomButton.addEventListener('click', e => {
@@ -185,18 +234,52 @@ function addMovie(){
         let newMovie = {}
             newMovie.image = e.target['new-image'].value
             newMovie.title = e.target['new-name'].value
-            newMovie.imDbRating = e.target['new-rating'].value
+            //newMovie.imDbRating = e.target['new-rating'].value
+            newMovie.imDbRating = '9.2'
             newMovie.year = e.target['new-releaseYear'].value
         shownMovies.pop()
         shownMovies.push(newMovie)
-        movieList.push(newMovie)
-        let shownMovieLength = (shownMovies.length-1)
+        movieList[0].push(newMovie)
+        movieListLength = (movieList[0].length)
+        //redefines show movie length
+        shownMovieLength = (shownMovies.length-1)
+        //print oujt the last thing, which is the newly submitted movie
+        //and we push(),  thats why its at the end. 
         createMovieCard(shownMovies[(shownMovieLength)])
         showSelectedCard(newMovie)
     })
 
 }
 addMovie()
+
+//now need to take the text value of the button and 
+        //pass the text value to a function and in that function 
+        //we will filter through all of movies for the rating 
+        //equal to the selected one and we will get it returned in an array. 
+function ratingButtonPower(){
+    for (let counter = 0; counter <= 12; counter++) { 
+        ratingButtons[counter].addEventListener('click', e => {
+            e.preventDefault()
+            searchMovieList(e.target.innerText)
+        })
+    }
+}
+ratingButtonPower()
+
+
+function searchMovieList(ratingInput){
+    //this will search through the movie list array  
+    //and pull out  all the ones that match that rating. return that array. 
+    let filteredMovies = movieList[0].filter(movie => {return movie.imDbRating.includes(ratingInput)})
+    movieProfiles.innerHTML = ''
+    filteredMovies.forEach(movie => {createMovieCard(movie)})
+    showSelectedCard(filteredMovies[0])
+}
+    
+
+
+
+
 
 
 //take the entire move list
@@ -210,12 +293,7 @@ addMovie()
 
 
 //Need to get done:
-    //add a alert that doesn't allow ytou to add the movies to the favorites list twice
-    //no duplicate random cards 
-    //remove from favorites: button 
-    //history bar 
     //format properly
-    //event listeners to 9.1, etc. buttons  
 
 //Want to get done:    
     //myfavorites stays when we refresh the page. 
