@@ -8,7 +8,7 @@ let currentMovie = {};
 //Establish variables to target areas of HTML that
 //we add Javascript Functionality to represent the data in. 
 const imageHighlight = document.querySelector('#highlight-image')
-const titleHighlight = document.querySelector('.highlightTitle')
+const titleHighlight = document.querySelector('#highlightTitle')
 const ratingHighlight = document.querySelector('#movieRating')
 const releaseYear = document.querySelector('#releaseYear')
 const movieProfiles = document.querySelector('#movieProfiles')
@@ -24,27 +24,30 @@ let movieListLength = 0
 let movieHistoryLength = 0
 
 
-//see if adding title to  the fetch will work and delete  .items below. We  will see. 
-//API!
-// fetch(`https://imdb-api.com/en/API/Top250Movies/k_9m771wic`)
-//     .then(response => response.json())
-//     .then(thing => {
-//         movieList.push(thing.items)
-//         movieListLength = (movieList[0].length)
-//         randomMoviesOnCard()
-// })     
+// see if adding title to  the fetch will work and delete  .items below. We  will see. 
+// // API!
+fetch(`https://imdb-api.com/en/API/Top250Movies/k_9m771wic`)
+    .then(response => response.json())
+    .then(objData => {
+        movieList.push(objData.items)
+        console.log(movieList)
+        movieListLength = (movieList[0].length)
+        randomMoviesOnCard()
+    }
+)     
+
 
 
 //Local JSON
-fetch(`http://localhost:3000/items`)
-    .then(response => response.json())
-    .then(objectData => {
-        movieList.push(objectData)
-        //assigns the variable an actual value
-        movieListLength = (movieList[0].length)
-        randomMovieOnCard() 
-    }
-)    
+//  fetch(`http://localhost:3000/items`)
+//     .then(response => response.json())
+//     .then(objectData => {
+//         movieList.push(objectData)
+//         //assigns the variable an actual value
+//         movieListLength = (movieList[0].length)
+//         randomMoviesOnCard() 
+//     }
+// )    
 
 
 function createMovieCard(movieObj) {
@@ -87,7 +90,7 @@ function createMovieCard(movieObj) {
 }
 
 //need to remove duplicates
-function randomMovieOnCard() {
+function randomMoviesOnCard() {
     //this line clears all the movies from the array
     movieProfiles.innerHTML = ''
     for(const counter1 = 0; counter1 < shownMovies.length ; counter1){
@@ -202,7 +205,7 @@ favoritesButtonPower()
 function randomButtonPower() {
     randomButton.addEventListener('click', e => {
         e.preventDefault()
-        randomMovieOnCard()
+        randomMoviesOnCard()
     })
 }
 randomButtonPower()
@@ -276,27 +279,3 @@ function searchMovieList(ratingInput){
     showSelectedCard(filteredMovies[0])
 }
     
-
-
-
-
-
-
-//take the entire move list
-//run a find on it (depends on the button clicked) 
-//take the returned array from find that has a foreach loop that spits it 
-//through each card.
-//criteria is(>9.0, 8.9, 8.8, 8.7, etc.)
-
-//couldn't i make a loop function that selects all of the items with 9.1,9,0 etc. 
-//as a switch or a else if (need to look up which)
-
-
-//Need to get done:
-    //format properly
-
-//Want to get done:    
-    //myfavorites stays when we refresh the page. 
-    //add a input form in the highlight section, where
-    //   you can make notes and also give a movie your personal rating. 
-    //   data

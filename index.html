@@ -6,12 +6,12 @@
   </head>
 
   <body id="body1">
+    <div id="topBackground">
+
     <div id="history">
       <span id="list">History : </span>
-    </div>
-    <br>
+      </div>
 
-    <span>
       <span class="alignThing"  id="alignThing">
         <p class = "myFavorites" id = "myFavorites">My Favorite Movies</p>
       </span>
@@ -19,25 +19,33 @@
 
       
       <div id="topSection"> 
-        <h1>Add Your Favorite Movies! </h1>
+        <h1>What are your Favorite Movies?</h1>
         <div id="movieHighlight">
-          <h2 class="highlightTitle">Name</h2>
-          <img id="highlight-image" class='movieCover' src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
-            alt="Sorry, we are experiencing technical difficulties." />
-          <div class="release">
-              <h3>Release Year: </h3>
-              <span id="releaseYear">I pull this from API</span>
+          <p id="highlightTitle" class="infoBox2">Name</p>
+          <div class="infoBox">
+            <br>
+            <img id="highlight-image" class='movieCover' src="https://files.worldwildlife.org/wwfcmsprod/images/Tiger_resting_Bandhavgarh_National_Park_India/hero_small/6aofsvaglm_Medium_WW226365.jpg"
+              alt="Sorry, we are experiencing technical difficulties." />
+          </div> 
+          <br>   
+          <div class="release, infoBox">
+              <p>Release Year: </p>
+              <span id="releaseYear">I pull this from API</span>  
           </div>
-          <div class="rating">
-            <h3>Rating (#/10): </h3>
+          <br>
+          <div class="rating, infoBox">
+            <p>Rating (#/10): </p>
             <span id="movieRating">I pull this from API</span>
           </div>
+          <br>
           <div>
-            <button id="addToFavorites"> Add to favorites</button>
+            <button  id="addToFavorites"> Add to favorites</button>
           </div>
+          <br>
         </div>
+        <br>
       </div>
-    </span>
+    </div>
     
     
 
@@ -62,7 +70,8 @@
       <button id="b82" class="filterButtons">8.2</button>
       <button id="b81" class="filterButtons">8.1</button>
       <button id="b80" class="filterButtons">8</button>
-  </div>
+    </div>  
+  
     
     <div id="movieProfiles">
       <!-- Images Will go here. 2 images tall x 3 images wide-->
@@ -70,7 +79,7 @@
       and a heart favorite button. that when clicked, adds the name only to the
       My 5 Favorite Breeds-->
     </div>
-
+    <br>
       <form id="newMovie">
         <h4>Add your favorites not shown!</h4>
         <label for="name">Name:</label> <br>
