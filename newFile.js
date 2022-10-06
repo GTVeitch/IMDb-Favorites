@@ -1,12 +1,5 @@
-//Establish empty arrays/objects to store various objects in wehen we need to
-const myFavoritesList = []; 
-const movieList = [];
-const movieHistory = [];
-const shownMovies = [];
-let currentMovie = {};
-
-//Establish variables to target areas of HTML that
-//we add Javascript Functionality to represent the data in. 
+//Establish variables to target areas of HTML where
+//we add Javascript functions to represent the data in.  
 const imageHighlight = document.querySelector('#highlight-image')
 const titleHighlight = document.querySelector('#highlightTitle')
 const ratingHighlight = document.querySelector('#movieRating')
@@ -19,13 +12,19 @@ const favoritesButton = document.querySelector('#addToFavorites')
 const favoritesList = document.querySelector('#myFavorites')
 const ratingButtons = document.querySelectorAll('.filterButtons')
 
+//Establish empty arrays/objects to store various objects in when we need to. 
+const myFavoritesList = []; 
+const movieList = [];
+const movieHistory = [];
+const shownMovies = [];
+let currentMovie = {};
+
 //Establish a starting point for these variables. 
 let movieListLength = 0
 let movieHistoryLength = 0
 
-
-// see if adding title to  the fetch will work and delete  .items below. We  will see. 
-// // API!
+//see if adding title to  the fetch will work and delete  .items below. We  will see. 
+// API!
 // fetch(`https://imdb-api.com/en/API/Top250Movies/k_9m771wic`)
 //     .then(response => response.json())
 //     .then(objData => {
@@ -38,7 +37,7 @@ let movieHistoryLength = 0
 
 
 
-//Local JSON
+// //Local JSON
  fetch(`http://localhost:3000/items`)
     .then(response => response.json())
     .then(objectData => {
@@ -70,6 +69,10 @@ function createMovieCard(movieObj) {
     //Add it all to the movie profiles section of the HTML
     navItem.append(navItem2)
     //functionality for the individual movie cards. 
+    navItem2.addEventListener('mouseover',  e=> {
+        e.preventDefault()
+
+    })
     navItem2.addEventListener('click', e => {
         e.preventDefault()
         //add the card to the movie highlight area
@@ -89,7 +92,7 @@ function createMovieCard(movieObj) {
     //     )    
 }
 
-//need to remove duplicates
+//This function will render random movie cards to the movie card section. 
 function randomMoviesOnCard() {
     //this line clears all the movies from the array
     movieProfiles.innerHTML = ''
@@ -137,6 +140,7 @@ function randomMoviesOnCard() {
     showSelectedCard(shownMovies[0])
 }
 
+//Allows the User to highlight a movie into the highlight section. 
 function showSelectedCard(movieObj) {
     currentMovie = movieObj
     imageHighlight.src = movieObj.image
@@ -145,6 +149,7 @@ function showSelectedCard(movieObj) {
     releaseYear.textContent = movieObj.year
 }
 
+//Creates a card for the movies to apear in the favorite section. 
 function createFavoriteMovieCard(movieObj) {
     currentMovie = movieObj;
     const navItem = document.createElement('img')
@@ -176,6 +181,7 @@ function createFavoriteMovieCard(movieObj) {
     })
 }
 
+//Allows the user to add their favorite movies to the left in the  myFavorites  section.
 function favoritesButtonPower(){
     favoritesButton.addEventListener('click', e => {
         e.preventDefault()
@@ -196,12 +202,10 @@ function favoritesButtonPower(){
             createFavoriteMovieCard(currentMovie)
         }       
     })
-}
-        
-    
+} 
 favoritesButtonPower()
 
-
+//Allows the random button to display (the number we determined) movie cards to the movie card section. 
 function randomButtonPower() {
     randomButton.addEventListener('click', e => {
         e.preventDefault()
@@ -210,6 +214,7 @@ function randomButtonPower() {
 }
 randomButtonPower()
 
+//this function adds movies that were selected to the highlight section and 
 function historyList() {
     movieHistoryLength = (movieHistory.length -1)
     //this line clears the history  
@@ -220,9 +225,10 @@ function historyList() {
     for(let counter = 0; counter < movieHistoryLength; counter ++) {
 
         const navItem = document.createElement("span")
+            //adds the text to the top. 
             navItem.textContent = movieHistory[counter].title + " | "
             historyBar.appendChild(navItem)
-            navItem.addEventListener('click', (e) => {
+            navItem.addEventListener('mouseover', (e) => {
                 e.preventDefault
                 showSelectedCard(movieHistory[counter])
             }
@@ -230,17 +236,20 @@ function historyList() {
     }
 }
 
-//input form 
+//Allows the user to add a movie that is not listed.  
 function addMovie(){
     newMovieForm.addEventListener('submit', e =>{
         e.preventDefault()
         let newMovie = {}
             newMovie.image = e.target['new-image'].value
             newMovie.title = e.target['new-name'].value
-            //newMovie.imDbRating = e.target['new-rating'].value
-            newMovie.imDbRating = '9.2'
+            newMovie.imDbRating = e.target['new-rating'].value
             newMovie.year = e.target['new-releaseYear'].value
-        shownMovies.pop()
+            //clears the input form after submission
+            e.target['new-image'].value = ''
+            e.target['new-name'].value = ''
+            e.target['new-rating'].value = ''
+            e.target['new-releaseYear'].value = ''
         shownMovies.push(newMovie)
         movieList[0].push(newMovie)
         movieListLength = (movieList[0].length)
@@ -248,20 +257,31 @@ function addMovie(){
         shownMovieLength = (shownMovies.length-1)
         //print oujt the last thing, which is the newly submitted movie
         //and we push(),  thats why its at the end. 
+        //ensure we put it into shown movies. 
         createMovieCard(shownMovies[(shownMovieLength)])
         showSelectedCard(newMovie)
+        postRequest(newMovie)
     })
 
 }
 addMovie()
 
-//now need to take the text value of the button and 
-        //pass the text value to a function and in that function 
-        //we will filter through all of movies for the rating 
-        //equal to the selected one and we will get it returned in an array. 
+function postRequest(movieObj){
+    fetch('http://localhost:3000/items', {
+        method: 'Post',
+        headers: {
+            'Content-Type':'application/json'
+        }, 
+        body:JSON.stringify(movieObj)
+    })
+}
+
+
+
+//Allows the user to select items by their IMDB rating       
 function ratingButtonPower(){
     for (let counter = 0; counter <= 12; counter++) { 
-        ratingButtons[counter].addEventListener('click', e => {
+        ratingButtons[counter].addEventListener('click' , e => {
             e.preventDefault()
             searchMovieList(e.target.innerText)
         })
@@ -269,7 +289,7 @@ function ratingButtonPower(){
 }
 ratingButtonPower()
 
-
+//Searches the starting movie list for specific IMDB ratings. 
 function searchMovieList(ratingInput){
     //this will search through the movie list array  
     //and pull out  all the ones that match that rating. return that array. 
@@ -280,4 +300,3 @@ function searchMovieList(ratingInput){
     filteredMovies.forEach(movie => {createMovieCard(movie)})
     showSelectedCard(filteredMovies[0])
 }
-    
