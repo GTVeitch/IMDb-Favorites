@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <link rel="stylesheet" href="style.css"/>
     <title>Phase-1-Project-Favorite-Movies</title>
@@ -8,18 +9,16 @@
   <body id="body1">
     <div id="topBackground">
 
-    <div id="history">
-      <span id="list">History : </span>
+      <div id="history">
+        <span id="list">History : </span>
       </div>
 
-      <span class="alignThing"  id="alignThing">
+      <span class="floatLeft">
         <p class = "myFavorites" id = "myFavorites">My Favorite Movies</p>
       </span>
-      
-
-      
+        
       <div id="topSection"> 
-        <h1>What are your Favorite Movies?</h1>
+        <h2>What are your Favorite Movies?</h2>
         <div id="movieHighlight">
           <p id="highlightTitle" class="infoBox2">Name</p>
           <div class="infoBox">
@@ -47,15 +46,12 @@
       </div>
     </div>
     
-    
-
-
-    
     <br>
     <div id="randomButtonContainer">
       <button id="randomMovies">Random Movies!</button>
     </div>
     <br>
+
     <div id="allTheButtons">
       <button id="b92" class="filterButtons">9.2</button>
       <button id="b91" class="filterButtons">9.1</button>
@@ -74,35 +70,33 @@
   
     
     <div id="movieProfiles">
-      <!-- Images Will go here. 2 images tall x 3 images wide-->
-      <!-- Each image will have a like counting button,
-      and a heart favorite button. that when clicked, adds the name only to the
-      My 5 Favorite Breeds-->
+      <!-- Images Will go here-->
     </div>
-    <br>
-      <form id="newMovie">
-        <h4>Add your favorites not shown!</h4>
-        <label for="name">Name:</label> <br>
-        <input type="text" id="new-name" class="stayInBorder" name='new-name'/>
-        <br>
-        <br>
-        <label for="image">Cover Image: </label> <br>
-        <input type="text" id="new-image" class="stayInBorder" placeholder="insert URL" name='new-image'/>
-        <br>
-        <br>
-        <label for="releaseYear">Release Year: </label><br>
-        <input type="text" id="new-releaseYear" class="stayInBorder" name='new-releaseYear'/>
-        <br>
-        <br>
-        <label for="numRating">Rating: </label><br>
-        <input type="text" id="new-rating" class="stayInBorder" placeholder="ex: 9.0, 8.5, 7.4" name='new-rating'/>
-        <br>
-        <br>
-        <input type="submit" value="Create  Movie!"/>
-      </form>
 
-    
-  
+    <br>
+    <form id="newMovie">
+      <h4>Add your favorites not shown!</h4>
+      <label for="name">Name:</label> <br>
+        <input type="text" id="new-name" class="stayInBorder" name='new-name'/>
+      <br>
+      <br>
+      <label for="image">Cover Image: </label> <br>
+        <input type="text" id="new-image" class="stayInBorder" placeholder="insert URL" name='new-image'/>
+      <br>
+      <br>
+      <label for="releaseYear">Release Year: </label><br>
+        <input type="text" id="new-releaseYear" class="stayInBorder" name='new-releaseYear'/>
+      <br>
+      <br>
+      <label for="numRating">Rating: </label><br>
+        <input type="text" id="new-rating" class="stayInBorder" placeholder="ex: 9.0, 8.5, 7.4" name='new-rating'/>
+      <br>
+      <br>
+        <input type="submit" value="Add Movie!"/>
+      <br>  
+      <div class ="hidden">_</div>
+    </form>
+
   </body>
   <script src="newFile.js"> </script>
 </html>

@@ -26,28 +26,28 @@ let movieHistoryLength = 0
 
 // see if adding title to  the fetch will work and delete  .items below. We  will see. 
 // // API!
-fetch(`https://imdb-api.com/en/API/Top250Movies/k_9m771wic`)
-    .then(response => response.json())
-    .then(objData => {
-        movieList.push(objData.items)
-        console.log(movieList)
-        movieListLength = (movieList[0].length)
-        randomMoviesOnCard()
-    }
-)     
+// fetch(`https://imdb-api.com/en/API/Top250Movies/k_9m771wic`)
+//     .then(response => response.json())
+//     .then(objData => {
+//         movieList.push(objData.items)
+//         console.log(movieList)
+//         movieListLength = (movieList[0].length)
+//         randomMoviesOnCard()
+//     }
+// )     
 
 
 
 //Local JSON
-//  fetch(`http://localhost:3000/items`)
-//     .then(response => response.json())
-//     .then(objectData => {
-//         movieList.push(objectData)
-//         //assigns the variable an actual value
-//         movieListLength = (movieList[0].length)
-//         randomMoviesOnCard() 
-//     }
-// )    
+ fetch(`http://localhost:3000/items`)
+    .then(response => response.json())
+    .then(objectData => {
+        movieList.push(objectData)
+        //assigns the variable an actual value
+        movieListLength = (movieList[0].length)
+        randomMoviesOnCard() 
+    }
+)    
 
 
 function createMovieCard(movieObj) {
@@ -273,7 +273,9 @@ ratingButtonPower()
 function searchMovieList(ratingInput){
     //this will search through the movie list array  
     //and pull out  all the ones that match that rating. return that array. 
+    //movie is what the  index is selecting. 
     let filteredMovies = movieList[0].filter(movie => {return movie.imDbRating.includes(ratingInput)})
+    //kills random  movie list
     movieProfiles.innerHTML = ''
     filteredMovies.forEach(movie => {createMovieCard(movie)})
     showSelectedCard(filteredMovies[0])
