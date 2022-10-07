@@ -14,10 +14,11 @@
 ## Challenges: 
   - Accessing and implememnting nested arrays and objects
   - Page alignment once functionality was established
-  - Applying event listeners to objects within the same html class.  
+  - Applying event listeners to objects within the same html class
+  - Proper management of global variables  
 
 ## Limitations: 
-  - Database did not hold movie descriptions. 
+  - Database did not hold movie descriptions
 
 
 
