@@ -265,18 +265,26 @@ function postRequest(movieObj){
     })
 }
 
-
-
-//Allows the user to select items by their IMDB rating       
+//Allows the user to select items by their IMDB rating 
+//cleaned up function
 function ratingButtonPower(){
-    for (let counter = 0; counter <= 12; counter++) { 
-        ratingButtons[counter].addEventListener('click' , e => {
+    ratingButtons.forEach(button => {
+        button.addEventListener('click',  e => {
             e.preventDefault()
             searchMovieList(e.target.innerText)
         })
-    }
+    })
 }
 ratingButtonPower()
+// Original function, 
+// function ratingButtonPower(){
+//     for (let counter = 0; counter <= 12; counter++) { 
+//         ratingButtons[counter].addEventListener('click' , e => {
+//             e.preventDefault()
+//             searchMovieList(e.target.innerText)
+//         })
+//     }
+//}
 
 //Searches the starting movie list for specific IMDB ratings. 
 function searchMovieList(ratingInput){
