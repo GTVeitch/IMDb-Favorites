@@ -14,6 +14,7 @@ const ratingButtons = document.querySelectorAll('.filterButtons')
 
 //Establish empty arrays/objects to store various objects in when we need to. 
 const myFavoritesList = []; 
+//original movie list of 250
 const movieList = [];
 const movieHistory = [];
 const shownMovies = [];
@@ -52,27 +53,22 @@ let movieHistoryLength = 0
 function createMovieCard(movieObj) {
     //establishing individual entities 
     currentMovie = movieObj;
-    //Nav item 1: create and add text content
+    //create and add text content
     const navItem = document.createElement('span')
     navItem.innerText = movieObj.title
     navItem.classList.add('movieText')
-    //Nav item 2: create and add image content
+    //create and add image content
     const navItem2 = document.createElement('img')
     navItem2.src = movieObj.image
     navItem2.classList.add('movieCover')
-    //Nav item 3: create and add a highlight button
-    // const navItem3 = document.createElement('button')
-    // navItem3.innerText = 'Learn More!'
-    // navItem3.classList.add('movieButton')
     //Add the span, nested within the img. 
-    movieProfiles.appendChild(navItem /*, navItem3*/)
-    //Add it all to the movie profiles section of the HTML
     navItem.append(navItem2)
-    //functionality for the individual movie cards. 
-    navItem2.addEventListener('mouseover',  e=> {
-        e.preventDefault()
-
-    })
+    //Add it all to the movie profiles section of the HTML
+    movieProfiles.appendChild(navItem)
+    //click event that triggers the card:
+    //1. info to appear in the highlight section
+    //2. adds the title to the movie list 
+    //3. 
     navItem2.addEventListener('click', e => {
         e.preventDefault()
         //add the card to the movie highlight area
@@ -82,14 +78,7 @@ function createMovieCard(movieObj) {
         //to then add the individual movie name to the history section
         movieHistory.push(movieObj)
         historyList()
-        }
-    )
-    //if we want the buttons to be the only way to get a movie in the lightlight section
-    // navItem3.addEventListener('click', e=> {
-    //     e.preventDefault()
-    //     showSelectedCard(movieObj)
-    //     }
-    //     )    
+    })
 }
 
 //This function will render random movie cards to the movie card section. 
